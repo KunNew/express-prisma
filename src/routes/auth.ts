@@ -1,8 +1,14 @@
-import { login, register } from "@/controllers/auth";
+import { login, newPassword, register, reset } from "@/controllers/auth";
 import { isAuth } from "@/middlewares/auth";
 import upload from "@/middlewares/multer";
-import { LoginSchema, RegisterSchema, validate } from "@/middlewares/validator";
+import {
+  LoginSchema,
+  NewPasswordSchema,
+  RegisterSchema,
+  validate,
+} from "@/middlewares/validator";
 import { Router } from "express";
+import { z } from "zod";
 
 const authRouter = Router();
 
@@ -14,5 +20,19 @@ authRouter.post(
 );
 
 authRouter.post("/login", validate(LoginSchema), login);
+
+authRouter.post(
+  "/reset",
+  validate(
+    z.object({
+      email: z.string().email({
+        message: "Email is required",
+      }),
+    })
+  ),
+  reset
+);
+
+authRouter.post("/new-password", validate(NewPasswordSchema), newPassword);
 
 export default authRouter;

@@ -23,6 +23,13 @@ model User {
   updatedAt DateTime @updatedAt
 }
 
+model PasswordResetToken {
+  id      String   @id @default(uuid()) @map("_id")
+  token   String
+  expires DateTime
+  email   String   @unique
+}
+
 type Profile {
   role           String  @default("user")
   avatar         String?
