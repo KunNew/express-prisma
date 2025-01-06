@@ -1,6 +1,8 @@
 # This is Simple Nodejs Express Starter Kit
 
-#### Node express + Typescript + Prisma ORM + mongodb - REST api (Boilerplate)
+#### Node express + Typescript + Prisma ORM + mongodb - REST api (Boilerplate) 
+
+<img src="https://skillicons.dev/icons?i=express,prisma,mongo"/>
 
 You can use it for your project. If it is useful for you,  
 don't forget to give me a **GitHub star**, please.
