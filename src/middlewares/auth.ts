@@ -18,7 +18,6 @@ declare global {
 
 export const isAuth: RequestHandler = async (req, res, next) => {
   const authToken = req.cookies.authToken;
-console.log(req.cookies);
 
   // send error response if there is no token
   if (!authToken) {

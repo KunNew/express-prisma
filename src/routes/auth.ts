@@ -1,4 +1,4 @@
-import { login, newPassword, register, reset } from "@/controllers/auth";
+import { login, logout, newPassword, register, reset } from "@/controllers/auth";
 import { isAuth } from "@/middlewares/auth";
 import upload from "@/middlewares/multer";
 import {
@@ -34,5 +34,7 @@ authRouter.post(
 );
 
 authRouter.post("/new-password", validate(NewPasswordSchema), newPassword);
+
+authRouter.post("/logout", logout);
 
 export default authRouter;

@@ -11,6 +11,7 @@ import { Resend } from "resend";
 import bcrypt from "bcrypt";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
 const domain = process.env.DOMAIN;
 
 export const register: RequestHandler = async (req, res) => {
@@ -191,4 +192,12 @@ export const newPassword: RequestHandler = async (req, res) => {
     },
   });
   res.json({ message: "Password updated" });
+};
+
+export const logout: RequestHandler = async (req, res) => {
+  res.clearCookie("authToken", {
+    httpOnly: true,
+    expires: new Date(Date.now()),
+  });
+  res.status(StatusCodes.OK).json({ message: "Logout successful" });
 };
